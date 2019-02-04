@@ -2,6 +2,12 @@
 
 Pychromepdf is a Python package that lets you easily create PDFs by rendering HTML content using Chrome or Chromium as backend. It works without any external dependecies except a working installation of Chrome or Chromium that supports headless mode.
 
+# Installation
+
+```bash
+pip install pychromepdf
+```
+
 ## Usage
 
 ### Rendering HTML bytestring to PDF
