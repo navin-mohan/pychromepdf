@@ -1,3 +1,3 @@
-from chrome_pdf import ChromePDF
+from .chrome_pdf import ChromePDF
 
 name = 'pychromepdf'
