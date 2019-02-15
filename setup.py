@@ -5,7 +5,7 @@ with open('README.md','r') as f:
 
 setuptools.setup(
     name='pychromepdf',
-    version='0.0.1',
+    version='0.0.2',
     author='Navin Mohan',
     author_email='navinmohan81@gmail.com',
     description='Creates PDFs from HTML rendered using chrome or chromium',
