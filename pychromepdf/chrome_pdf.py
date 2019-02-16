@@ -1,6 +1,6 @@
 import subprocess
 import tempfile
-
+import sys
 
 class ChromePDF(object):
 
@@ -56,9 +56,11 @@ class ChromePDF(object):
                 output_file=output_file.name
             )
 
+            isNotWindows = not sys.platform.startswith('win32')
+
             try:
                 # execute the shell command to generate PDF
-                subprocess.run(print_to_pdf_command,shell=True,check=True)
+                subprocess.run(print_to_pdf_command,shell=isNotWindows,check=True)
             except subprocess.CalledProcessError:
                 return False
             
