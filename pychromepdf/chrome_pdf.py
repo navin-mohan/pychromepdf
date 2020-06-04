@@ -14,7 +14,17 @@ class ChromePDF(object):
         '{input_file}'
     )
 
-    def __init__(self,chrome_exec):
+    _chrome_args_nosandbox = (
+        '{chrome_exec}',
+        '--headless',
+        '--disable-gpu',
+        '--no-margins',
+        '--no-sandbox',
+        '--print-to-pdf={output_file}',
+        '{input_file}'
+    )
+
+    def __init__(self, chrome_exec, sandbox=True):
         '''
         Constructor
         chrome_exec (string) - path to chrome executable
@@ -24,8 +34,9 @@ class ChromePDF(object):
         assert isinstance(chrome_exec,str) and chrome_exec != ''
 
         self._chrome_exe = chrome_exec
+        self._sandbox = sandbox
 
-        
+
     def html_to_pdf(self,html_byte_string, output_file):
         '''
         Converts the given html_byte_string to PDF stored at output_file
@@ -50,7 +61,10 @@ class ChromePDF(object):
             temp_file_path = 'file://{0}'.format(html_file.name)
 
             # prepare the shell command
-            print_to_pdf_command = ' '.join(self._chrome_args).format(
+            args = self._chrome_args
+            if not self._sandbox:
+                args = self._chrome_args_nosandbox
+            print_to_pdf_command = ' '.join(args).format(
                 chrome_exec=self._chrome_exe,
                 input_file=temp_file_path,
                 output_file=output_file.name
@@ -58,15 +72,8 @@ class ChromePDF(object):
 
             isNotWindows = not sys.platform.startswith('win32')
 
-            try:
-                # execute the shell command to generate PDF
-                subprocess.run(print_to_pdf_command,shell=isNotWindows,check=True)
-            except subprocess.CalledProcessError:
-                return False
-            
-        return True
-
-
+            # execute the shell command to generate PDF
+            subprocess.run(print_to_pdf_command, shell=isNotWindows, check=True)
 
 
 
