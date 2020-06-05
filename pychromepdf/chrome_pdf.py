@@ -5,16 +5,13 @@ import sys
 class ChromePDF(object):
 
     # set headless chrome arguments
-    _chrome_args = (
-        '{chrome_exec}',
+    _chrome_options = [
         '--headless',
         '--disable-gpu',
         '--no-margins',
-        '--print-to-pdf={output_file}',
-        '{input_file}'
-    )
+    ]
 
-    def __init__(self,chrome_exec):
+    def __init__(self,chrome_exec,sandbox=True):
         '''
         Constructor
         chrome_exec (string) - path to chrome executable
@@ -24,6 +21,7 @@ class ChromePDF(object):
         assert isinstance(chrome_exec,str) and chrome_exec != ''
 
         self._chrome_exe = chrome_exec
+        self._sandbox = sandbox
 
         
     def html_to_pdf(self, html_byte_string, output_file, raise_exception=False):
@@ -50,7 +48,15 @@ class ChromePDF(object):
             temp_file_path = 'file://{0}'.format(html_file.name)
 
             # prepare the shell command
-            print_to_pdf_command = ' '.join(self._chrome_args).format(
+            args = ['{chrome_exec}'] + self._chrome_options
+
+            if not self._sandbox:
+                # Without sandbox
+                args += ['--no-sandbox']
+
+            args += ['--print-to-pdf={output_file}','{input_file}']
+
+            print_to_pdf_command = ' '.join(args).format(
                 chrome_exec=self._chrome_exe,
                 input_file=temp_file_path,
                 output_file=output_file.name
