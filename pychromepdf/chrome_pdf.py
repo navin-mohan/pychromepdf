@@ -26,7 +26,7 @@ class ChromePDF(object):
         self._chrome_exe = chrome_exec
 
         
-    def html_to_pdf(self,html_byte_string, output_file):
+    def html_to_pdf(self, html_byte_string, output_file, raise_exception=False):
         '''
         Converts the given html_byte_string to PDF stored at output_file
 
@@ -62,6 +62,8 @@ class ChromePDF(object):
                 # execute the shell command to generate PDF
                 subprocess.run(print_to_pdf_command,shell=isNotWindows,check=True)
             except subprocess.CalledProcessError:
+                if raise_exception:
+                    raise
                 return False
             
         return True
