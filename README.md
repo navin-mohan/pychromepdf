@@ -129,3 +129,9 @@ Template
 </html>
 
 ```
+# Contributors
+- [nvnmo](https://github.com/nvnmo)
+- [chibiegg](https://github.com/chibiegg)
+
+# License
+MIT License
