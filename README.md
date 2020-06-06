@@ -1,4 +1,4 @@
-# Pychromepdf
+# Pychromepdf [![PyPI version](https://badge.fury.io/py/pychromepdf.png)](https://badge.fury.io/py/pychromepdf) [![Travis build status](https://travis-ci.org/nvnmo/pychromepdf.svg?branch=release)](https://travis-ci.org/github/nvnmo/pychromepdf)
 
 Pychromepdf is a Python package that lets you easily create PDFs by rendering HTML content using Chrome or Chromium as backend. It works without any external dependecies except a working installation of Chrome or Chromium that supports headless mode.
 
@@ -63,6 +63,8 @@ app = Flask(__name__)
 
 # change to your chrome executable path
 PATH_TO_CHROME_EXE = '/usr/bin/google-chrome-stable'
+# if you're on MacOS
+# PATH_TO_CHROME_EXE = '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 # initialize a chromepdf object
 cpdf = ChromePDF(PATH_TO_CHROME_EXE)
@@ -129,3 +131,9 @@ Template
 </html>
 
 ```
+# Contributors
+- [nvnmo](https://github.com/nvnmo)
+- [chibiegg](https://github.com/chibiegg)
+
+# License
+MIT License
