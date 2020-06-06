@@ -63,6 +63,8 @@ app = Flask(__name__)
 
 # change to your chrome executable path
 PATH_TO_CHROME_EXE = '/usr/bin/google-chrome-stable'
+# if you're on MacOS
+# PATH_TO_CHROME_EXE = '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 # initialize a chromepdf object
 cpdf = ChromePDF(PATH_TO_CHROME_EXE)
