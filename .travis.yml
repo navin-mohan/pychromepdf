@@ -11,7 +11,7 @@ deploy:
   user: nvnmo 
   on:
     branch: master
-    tag: true
+    tags: true
     condition: "$TRAVIS_TAG =~ ^v.*$"
   password:
     secure: gFDuF0/Sc3H/rcRZ/zsPfzNtJLwIMIs8hmt8xik5QeiY60JYX0sM9j7zCySRz8+7M5JLXjIeSoI5A5W10SXv/sz0T9ISHUskGKu1zBTeujAG4v5DzvtKFqec9IdIbis5p8inQPL42udtmusBuw0F6bruOt/LhCiJw3mpWfgOjiyZVu0q5ct1JC6AVBcWr+HjOfzxNG5QKsejUMXZpr2svHWTG9fRii5K4NGYV4tBnYm4T60+NV3WLlPC9H01hHnFWOI4uKZwRQdYLMXHMKL7pOR1WwVG+6DpwNk9klBT/QO2GINhXrh1O1UuaOuJBxmcBsMRmBJhCkwdnSs+FF5UbhMja+1XAuYjQEfBeSHNsmTSoQCOvaNezUmIwVwWB4t0OH37na4T9SRMx5/xjBCeXfnfKxcUTcOOt/FF50/aRZqEDtABPv5fbKwB1Qn14XJm2700h+ne6091RJc5fE1/P17mT9TXI458+fHC+nxPB4SicJ2LKsP7u04IvyAHNp/+9rkxcwRUEfU4yOHh+QFryfPJ9RmRYw1xXXNSmAOFNg2QishPA/jx5RxdUC0KiQkXFc8ZGG/AnJPere3PLs1XyS8S4EFfwxkbsJZroqHjvsU7UiM/ipKXRaHC64TBywQriP/4s9i8D0wDImqWn0rrUoVLZjj/vvI5G47NME7zTKs=
