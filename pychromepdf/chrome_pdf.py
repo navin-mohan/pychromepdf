@@ -29,7 +29,7 @@ class ChromePDF(object):
         Converts the given html_byte_string to PDF stored at output_file
 
         html_byte_string (string) - html to be rendered to PDF
-        output_file (string) - file object to output PDF file  
+        output_file (File object) - file object to output PDF file  
 
         returns True if successful and False otherwise 
         '''
@@ -45,21 +45,10 @@ class ChromePDF(object):
             html_file.write(str.encode(html_byte_string))
             html_file.flush()
 
-            temp_file_path = 'file://{0}'.format(html_file.name)
+            temp_file_url = 'file://{0}'.format(html_file.name)
 
-            # prepare the shell command
-            args = ['{chrome_exec}'] + self._chrome_options
-
-            if not self._sandbox:
-                # Without sandbox
-                args += ['--no-sandbox']
-
-            args += ['--print-to-pdf={output_file}','{input_file}']
-
-            print_to_pdf_command = ' '.join(args).format(
-                chrome_exec=self._chrome_exe,
-                input_file=temp_file_path,
-                output_file=output_file.name
+            print_to_pdf_command = self._generate_shell_command(
+                self._chrome_exe, temp_file_url, output_file.name, self._sandbox,
             )
 
             isNotWindows = not sys.platform.startswith('win32')
@@ -75,7 +64,28 @@ class ChromePDF(object):
         return True
 
 
+    def _generate_shell_command(self, chrome_exe, input_url, output_file_name, sandbox):
+        '''
+        Generate the command string
 
+        chrome_exe (string) - html to be rendered to PDF
+        input_url (string) - html to be rendered to PDF
+        output_file_name (string) - file object to output PDF file
+        sandbox (boolean) - using sandbox mode
 
+        returns command string
+        '''
 
+        args = ['{chrome_exec}'] + self._chrome_options
 
+        if not sandbox:
+            # Without sandbox
+            args += ['--no-sandbox']
+
+        args += ['--print-to-pdf={output_file}', '{input_url}']
+
+        return ' '.join(args).format(
+            chrome_exec=chrome_exe,
+            input_url=input_url,
+            output_file=output_file_name,
+        )
