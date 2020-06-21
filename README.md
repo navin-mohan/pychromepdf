@@ -1,4 +1,4 @@
-# Pychromepdf [![PyPI version](https://badge.fury.io/py/pychromepdf.png)](https://badge.fury.io/py/pychromepdf) [![Travis build status](https://travis-ci.org/nvnmo/pychromepdf.svg?branch=master)](https://travis-ci.org/github/nvnmo/pychromepdf)
+# Pychromepdf [![PyPI version](https://badge.fury.io/py/pychromepdf.png)](https://badge.fury.io/py/pychromepdf) [![Travis build status](https://travis-ci.org/navin-mohan/pychromepdf.svg?branch=master)](https://travis-ci.org/github/navin-mohan/pychromepdf)
 
 Pychromepdf is a Python package that lets you easily create PDFs by rendering HTML content using Chrome or Chromium as backend. It works without any external dependecies except a working installation of Chrome or Chromium that supports headless mode.
 
@@ -132,7 +132,7 @@ Template
 
 ```
 # Contributors
-- [nvnmo](https://github.com/nvnmo)
+- [nvnmo](https://github.com/navin-mohan)
 - [chibiegg](https://github.com/chibiegg)
 
 # License
